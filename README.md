@@ -32,7 +32,7 @@ Mp4 Table Property that checks Entry number has a vulnerability with opening a m
 
  Program received signal SIGSEGV, Segmentation fault.
 
-                                    registers
+registers
  EAX: 0x80695c0 --> 0x0
  EBX: 0xb7fd5000 --> 0x171e40
  ECX: 0x0
@@ -43,7 +43,7 @@ Mp4 Table Property that checks Entry number has a vulnerability with opening a m
  EIP: 0xb7f0af85 (<mp4v2::impl::MP4Atom::~MP4Atom()+53>: call   DWORD PTR [edx+0x4])
  EFLAGS: 0x10206 (carry PARITY adjust zero sign trap INTERRUPT direction overflow)
 
-                                       code
+code
     0xb7f0af7e <mp4v2::impl::MP4Atom::~MP4Atom()+46>: xchg   ax,ax
     0xb7f0af80 <mp4v2::impl::MP4Atom::~MP4Atom()+48>: mov    edx,DWORD PTR [eax]
     0xb7f0af82 <mp4v2::impl::MP4Atom::~MP4Atom()+50>: mov    DWORD PTR [esp],eax
@@ -52,6 +52,7 @@ Mp4 Table Property that checks Entry number has a vulnerability with opening a m
     0xb7f0af8b <mp4v2::impl::MP4Atom::~MP4Atom()+59>: jbe    0xb7f0afa0 <mp4v2::impl::MP4Atom::~MP4Atom()+80>
     0xb7f0af8d <mp4v2::impl::MP4Atom::~MP4Atom()+61>: mov    edx,DWORD PTR [esi+0x4c]
     0xb7f0af90 <mp4v2::impl::MP4Atom::~MP4Atom()+64>: add    edi,0x1
+    
 Guessed arguments:
  arg[0]: 0x80695c0 --> 0x0
 
