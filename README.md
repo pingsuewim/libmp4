@@ -10,11 +10,16 @@ Entry Number validation for the MP4 Table Property, which allows remote attacker
 or possibly have unspecified other impact via a crafted mp4 file.
 
 
+
+
 MP4v2 through 2.0.0
 
 Mp4 Table Property that checks Entry number has a vulnerability with opening a maliciously craft mp4 file. 
 
 It causes Memory crash and Denial-Of-Service.
+
+
+
 
  root@ubuntu:/home/wim# hexdump -C wim.mp4 | grep 63
  
@@ -38,10 +43,15 @@ It causes Memory crash and Denial-Of-Service.
 
 
 
+
+
  insufficient checking on Entry Number in MP4 Table Property- m_pProperties[i] 0xC1C ~ 0xC1F in /src/mp4atom.cpp
 
  When overflow occurs, small size of data is allocated and while reading data, crash occurs due to a memory reference error
 
+ 
+ 
+ 
  gdb-peda$ r ../wim.mp4
  
  Starting program: /home/wim/.libs/lt-mp4info ../wim.mp4
@@ -51,6 +61,9 @@ It causes Memory crash and Denial-Of-Service.
  ../wim.mp4:
 
  Program received signal SIGSEGV, Segmentation fault.
+ 
+ 
+ 
 
 registers
 
@@ -91,9 +104,12 @@ code
     0xb7f0af90 <mp4v2::impl::MP4Atom::~MP4Atom()+64>: add    edi,0x1
     
     
+    
 Guessed arguments:
 
  arg[0]: 0x80695c0 --> 0x0
+
+
 
 stack
 
@@ -112,6 +128,9 @@ stack
  0024| 0xbfffe8a8 ("sttc\264W\354\267\020\225\006\b")
  
  0028| 0xbfffe8ac --> 0xb7ec57b4 (<mp4v2::impl::MP4StandardAtom::~MP4StandardAtom()+36>: mov    DWORD PTR [esp],esi)
+
+
+
 
 Legend: code, data, rodata, value
 
